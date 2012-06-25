@@ -60,7 +60,7 @@ public class IntersectionRule extends ClueSolutionRule {
 
                     // TODO Would checking this for both black and white help?
                     int numBlackInIntersection = clue.getTargetNumber(Color.BLACK) - outsideSubset.size();
-                    if (outsideSubset.size() > 0 && otherClue.getTargetNumber(Color.BLACK) == numBlackInIntersection) {
+                    if (!outsideSubset.isEmpty() && otherClue.getTargetNumber(Color.BLACK) == numBlackInIntersection) {
                         // The number of black squares in the intersection du to the other clue means that all the squares
                         // we have outside the intersection must be black.
                         Set<Square> intersection = Sets.intersection(affectedSquares, otherAffected);

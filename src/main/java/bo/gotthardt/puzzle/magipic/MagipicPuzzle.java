@@ -67,7 +67,7 @@ public class MagipicPuzzle {
         squares = input.getSquares();
         numColumns = input.getNumColumns();
 
-        Preconditions.checkArgument(squares.size() > 0, "Puzzle must have at least one square.");
+        Preconditions.checkArgument(!squares.isEmpty(), "Puzzle must have at least one square.");
     }
 
     /**
@@ -76,7 +76,7 @@ public class MagipicPuzzle {
      * @throws IllegalStateException if the puzzle is not solvable
      */
     public void solve() {
-        while (activeClues.size() > 0) {
+        while (!activeClues.isEmpty()) {
             Set<Clue> newClues = Sets.newHashSet();
 
             for (Clue clue : activeClues) {

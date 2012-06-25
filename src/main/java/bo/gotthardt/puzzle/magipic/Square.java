@@ -118,7 +118,7 @@ public class Square {
      *
      * @see Square#hasColor()
      */
-    public static Predicate<Square> UNCOLORED = new Predicate<Square>() {
+    public static final Predicate<Square> UNCOLORED = new Predicate<Square>() {
         @Override
         public boolean apply(Square square) {
             return !square.hasColor();

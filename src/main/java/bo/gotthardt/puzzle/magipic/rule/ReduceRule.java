@@ -27,7 +27,7 @@ public class ReduceRule extends ClueSolutionRule {
     @Override
     protected void trySolve() {
         // TODO Can this be combined with CleanupRule?
-        if (affectedSquares.size() > uncoloredSquares.size() && uncoloredSquares.size() > 0) {
+        if (affectedSquares.size() > uncoloredSquares.size() && !uncoloredSquares.isEmpty()) {
             // Some (but not all) of the affected are colored, so replace with a "reduced" clue for the uncolored.
             Set<Square> blackSquares = Sets.filter(affectedSquares, Color.BLACK);
             int uncoloredTargetBlack = clue.getTargetNumber(Color.BLACK) - blackSquares.size();

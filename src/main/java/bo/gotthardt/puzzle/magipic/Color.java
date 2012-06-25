@@ -10,7 +10,13 @@ import com.google.common.base.Predicate;
  * @author Bo Gotthardt
  */
 public enum Color implements Predicate<Square> {
+    /**
+     * Black.
+     */
     BLACK,
+    /**
+     * White.
+     */
     WHITE;
 
     @Override

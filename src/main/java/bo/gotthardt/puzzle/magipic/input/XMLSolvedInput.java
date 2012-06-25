@@ -12,6 +12,11 @@ import java.io.File;
  * @author Bo Gotthardt
  */
 public class XMLSolvedInput extends XMLInput {
+    /**
+     * Constructor.
+     *
+     * @param file the file to read
+     */
     public XMLSolvedInput(File file) {
         super(file, "/puzzle/data/solution/row");
     }

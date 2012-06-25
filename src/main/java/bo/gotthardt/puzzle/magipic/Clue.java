@@ -25,7 +25,7 @@ public class Clue {
      * @param affectedSquares the squares affected by this clue, must not be empty
      */
     public Clue(int targetBlack, Set<Square> affectedSquares) {
-        Preconditions.checkArgument(affectedSquares.size() > 0, "Clue must affect at least one square.");
+        Preconditions.checkArgument(!affectedSquares.isEmpty(), "Clue must affect at least one square.");
         Preconditions.checkArgument(targetBlack <= affectedSquares.size(), "Clue cannot require more black squares than it affects.");
         this.targetBlack = targetBlack;
         this.affectedSquares = ImmutableSet.copyOf(affectedSquares);

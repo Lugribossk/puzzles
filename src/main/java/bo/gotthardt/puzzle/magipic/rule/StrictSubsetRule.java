@@ -55,7 +55,7 @@ public class StrictSubsetRule extends ClueSolutionRule {
                 if (affectedSquares.containsAll(otherAffected)) {
                     // The other clue solely affects a strict subset of this clue, so we can create a new clue for the squares outside that subset.
                     Set<Square> outsideSubset = Sets.difference(affectedSquares, otherAffected);
-                    if (outsideSubset.size() > 0) {
+                    if (!outsideSubset.isEmpty()) {
                         int outsideSubsetTargetBlack = clue.getTargetNumber(Color.BLACK) - otherClue.getTargetNumber(Color.BLACK);
 
                         // All the information in the current clue is contained in the other clue, and the newly created one.

@@ -12,7 +12,11 @@ import java.io.File;
  * @author Bo Gotthardt
  */
 public class XMLClueInput extends XMLInput {
-
+    /**
+     * Constructor.
+     *
+     * @param file the file to read
+     */
     public XMLClueInput(File file) {
         super(file, "/puzzle/data/source/row");
     }

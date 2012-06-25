@@ -24,7 +24,7 @@ public class CleanupRule extends ClueSolutionRule {
 
     @Override
     protected void trySolve() {
-        if (uncoloredSquares.size() == 0) {
+        if (uncoloredSquares.isEmpty()) {
             Preconditions.checkState(clue.getTargetNumber(Color.BLACK) == Sets.filter(affectedSquares, Color.BLACK).size(),
                                      "Found implicitly solved clue with wrong solution.");
             setSolution();

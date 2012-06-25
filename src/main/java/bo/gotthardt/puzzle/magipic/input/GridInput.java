@@ -15,7 +15,7 @@ import java.util.Set;
  * @author Bo Gotthardt
  */
 public abstract class GridInput implements PuzzleInput {
-    protected ArrayTable<Integer, Integer, Square> squares;
+    private ArrayTable<Integer, Integer, Square> squares;
     protected final Set<Clue> clues = Sets.newHashSet();
     protected int numRows;
     protected int numColumns;
