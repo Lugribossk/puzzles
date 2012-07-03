@@ -7,8 +7,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link IntersectionRule}.
@@ -31,17 +30,17 @@ public class IntersectionRuleTest {
 
         IntersectionRule rule = new IntersectionRule(c1);
 
-        assertTrue(rule.hasSolution());
-        assertEquals(2, rule.getNewClues().size());
+        assertThat(rule.hasSolution()).isTrue();
+        assertThat(rule.getNewClues()).hasSize(2);
 
         Clue c3 = ImmutableList.copyOf(rule.getNewClues()).get(0);
 
-        assertEquals(ImmutableSet.of(s2, s3, s4, s5), c3.getAffectedSquares());
-        assertEquals(2, c3.getTargetNumber(Color.BLACK));
+        assertThat(c3.getAffectedSquares()).isEqualTo(ImmutableSet.of(s2, s3, s4, s5));
+        assertThat(c3.getTargetNumber(Color.BLACK)).isEqualTo(2);
 
         Clue c4 = ImmutableList.copyOf(rule.getNewClues()).get(1);
 
-        assertEquals(ImmutableSet.of(s1), c4.getAffectedSquares());
-        assertEquals(1, c4.getTargetNumber(Color.BLACK));
+        assertThat(c4.getAffectedSquares()).isEqualTo(ImmutableSet.of(s1));
+        assertThat(c4.getTargetNumber(Color.BLACK)).isEqualTo(1);
     }
 }

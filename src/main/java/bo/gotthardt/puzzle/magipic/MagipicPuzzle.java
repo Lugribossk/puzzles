@@ -74,8 +74,9 @@ public class MagipicPuzzle {
      * Solve the puzzle, assuming that it is solvable.
      *
      * @throws IllegalStateException if the puzzle is not solvable
+     * @return this modified into solved form
      */
-    public void solve() {
+    public MagipicPuzzle solve() {
         while (!activeClues.isEmpty()) {
             Set<Clue> newClues = Sets.newHashSet();
 
@@ -100,6 +101,8 @@ public class MagipicPuzzle {
             Preconditions.checkState(!activeClues.equals(newClues), "Puzzle appears unsolvable.");
             activeClues = newClues;
         }
+
+        return this;
     }
 
     /**

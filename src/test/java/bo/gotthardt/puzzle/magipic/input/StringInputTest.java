@@ -1,13 +1,16 @@
 package bo.gotthardt.puzzle.magipic.input;
 
 import bo.gotthardt.puzzle.magipic.Color;
+import bo.gotthardt.puzzle.magipic.Square;
 import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static bo.gotthardt.puzzle.magipic.fest.FestConditions.color;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 
 /**
@@ -21,8 +24,8 @@ public class StringInputTest {
         StringInput input = new StringInput("  ",
                                             " 4");
 
-        assertEquals(4, input.getSquares().size());
-        assertEquals(4, ImmutableList.copyOf(input.getClues()).get(0).getTargetNumber(Color.BLACK));
+        assertThat(input.getSquares()).hasSize(4);
+        assertThat(ImmutableList.copyOf(input.getClues()).get(0).getTargetNumber(Color.BLACK)).isEqualTo(4);
     }
 
     @Test
@@ -30,20 +33,22 @@ public class StringInputTest {
         StringInput input = new StringInput("#..",
                                             "#..");
 
-        assertEquals(6, input.getSquares().size());
-        assertEquals(Color.BLACK, input.getSquares().get(0).getColor());
-        assertEquals(Color.WHITE, input.getSquares().get(1).getColor());
-        assertEquals(Color.WHITE, input.getSquares().get(2).getColor());
-        assertEquals(Color.BLACK, input.getSquares().get(3).getColor());
-        assertEquals(Color.WHITE, input.getSquares().get(4).getColor());
-        assertEquals(Color.WHITE, input.getSquares().get(5).getColor());
+        List<Square> squares = input.getSquares();
+
+        assertThat(squares).hasSize(6);
+        assertThat(squares.get(0)).is(color(Color.BLACK));
+        assertThat(squares.get(1)).is(color(Color.WHITE));
+        assertThat(squares.get(2)).is(color(Color.WHITE));
+        assertThat(squares.get(3)).is(color(Color.BLACK));
+        assertThat(squares.get(4)).is(color(Color.WHITE));
+        assertThat(squares.get(5)).is(color(Color.WHITE));
     }
 
     @Test
     public void testFileInput() throws IOException {
         StringInput input = new StringInput(new File(this.getClass().getResource("/StringInputTest1.txt").getFile()));
 
-        assertEquals(9, input.getSquares().size());
-        assertEquals(9, ImmutableList.copyOf(input.getClues()).get(0).getTargetNumber(Color.BLACK));
+        assertThat(input.getSquares()).hasSize(9);
+        assertThat(ImmutableList.copyOf(input.getClues()).get(0).getTargetNumber(Color.BLACK)).isEqualTo(9);
     }
 }

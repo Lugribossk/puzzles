@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.assertEquals;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link XMLSolvedInput}.
@@ -18,7 +18,7 @@ public class XMLSolvedInputTest {
     public void testReadFile() {
         PuzzleInput input = new XMLSolvedInput(new File(this.getClass().getResource("/conceptis1.xml").getFile()));
 
-        assertEquals(223, Collections2.filter(input.getSquares(), Color.BLACK).size());
-        assertEquals(20 * 20 - 223, Collections2.filter(input.getSquares(), Color.WHITE).size());
+        assertThat(Collections2.filter(input.getSquares(), Color.BLACK)).hasSize(223);
+        assertThat(Collections2.filter(input.getSquares(), Color.WHITE)).hasSize(20 * 20 - 223);
     }
 }

@@ -7,8 +7,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link StrictSubsetRule}.
@@ -26,12 +25,12 @@ public class StrictSubsetRuleTest {
 
         StrictSubsetRule rule = new StrictSubsetRule(c1);
 
-        assertTrue(rule.hasSolution());
-        assertEquals(1, rule.getNewClues().size());
+        assertThat(rule.hasSolution()).isTrue();
+        assertThat(rule.getNewClues()).hasSize(1);
 
         Clue c3 = ImmutableList.copyOf(rule.getNewClues()).get(0);
 
-        assertEquals(ImmutableSet.of(s1), c3.getAffectedSquares());
-        assertEquals(1, c3.getTargetNumber(Color.WHITE));
+        assertThat(c3.getAffectedSquares()).isEqualTo(ImmutableSet.of(s1));
+        assertThat(c3.getTargetNumber(Color.WHITE)).isEqualTo(1);
     }
 }

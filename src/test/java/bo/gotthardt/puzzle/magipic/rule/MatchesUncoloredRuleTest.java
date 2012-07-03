@@ -6,8 +6,8 @@ import bo.gotthardt.puzzle.magipic.Square;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static bo.gotthardt.puzzle.magipic.fest.FestConditions.color;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link MatchesUncoloredRule}.
@@ -22,9 +22,9 @@ public class MatchesUncoloredRuleTest {
 
         MatchesUncoloredRule rule = new MatchesUncoloredRule(clue);
 
-        assertTrue(rule.hasSolution());
-        assertEquals(0, rule.getNewClues().size());
-        assertEquals(Color.BLACK, square.getColor());
+        assertThat(rule.hasSolution()).isTrue();
+        assertThat(rule.getNewClues()).isEmpty();
+        assertThat(square).is(color(Color.BLACK));
     }
 
     @Test
@@ -34,8 +34,8 @@ public class MatchesUncoloredRuleTest {
 
         MatchesUncoloredRule rule = new MatchesUncoloredRule(clue);
 
-        assertTrue(rule.hasSolution());
-        assertEquals(0, rule.getNewClues().size());
-        assertEquals(Color.WHITE, square.getColor());
+        assertThat(rule.hasSolution()).isTrue();
+        assertThat(rule.getNewClues()).isEmpty();
+        assertThat(square).is(color(Color.WHITE));
     }
 }

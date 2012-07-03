@@ -7,8 +7,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link ReduceRule}.
@@ -24,11 +23,11 @@ public class ReduceRuleTest {
 
         ReduceRule rule = new ReduceRule(c1);
 
-        assertTrue(rule.hasSolution());
-        assertEquals(1, rule.getNewClues().size());
+        assertThat(rule.hasSolution()).isTrue();
+        assertThat(rule.getNewClues()).hasSize(1);
 
         Clue c2 = ImmutableList.copyOf(rule.getNewClues()).get(0);
-        assertEquals(ImmutableSet.of(s2), c2.getAffectedSquares());
-        assertEquals(1, c2.getTargetNumber(Color.WHITE));
+        assertThat(c2.getAffectedSquares()).isEqualTo(ImmutableSet.of(s2));
+        assertThat(c2.getTargetNumber(Color.WHITE)).isEqualTo(1);
     }
 }

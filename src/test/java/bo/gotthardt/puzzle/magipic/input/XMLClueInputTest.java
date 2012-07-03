@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.assertEquals;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests for {@link XMLClueInput}.
@@ -16,8 +16,8 @@ public class XMLClueInputTest {
     public void testReadFile() {
         PuzzleInput input = new XMLClueInput(new File(this.getClass().getResource("/conceptis1.xml").getFile()));
 
-        assertEquals(20 * 20, input.getSquares().size());
+        assertThat(input.getSquares()).hasSize(20 * 20);
         // 248 occurrences of '-1'.
-        assertEquals(20 * 20 - 248, input.getClues().size());
+        assertThat(input.getClues()).hasSize(20 * 20 - 248);
     }
 }

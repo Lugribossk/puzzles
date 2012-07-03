@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.assertTrue;
+import static bo.gotthardt.puzzle.magipic.fest.FestConditions.colorEqualsTo;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Tests using complex puzzles downloaded from <a href="http://www.conceptispuzzles.com/index.aspx?uri=puzzle/fill-a-pix">Conceptis</a>.
@@ -37,6 +38,6 @@ public class ConceptisPuzzlesTest {
 
         clues.solve();
 
-        assertTrue(clues.colorEquals(solution));
+        assertThat(clues).is(colorEqualsTo(solution));
     }
 }
