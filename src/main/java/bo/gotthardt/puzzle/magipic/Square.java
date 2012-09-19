@@ -4,6 +4,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
+import lombok.Getter;
 
 import java.util.Set;
 
@@ -15,16 +16,11 @@ import java.util.Set;
  * @author Bo Gotthardt
  */
 public class Square {
-    private Optional<Color> color;
-    private final Set<Clue> clues;
+    private Optional<Color> color = Optional.absent();
+    /** The set of clues that affect this square. */
+    @Getter
+    private final Set<Clue> clues = Sets.newHashSet();
 
-    /**
-     * Constructor.
-     */
-    public Square() {
-        color = Optional.absent();
-        clues = Sets.newHashSet();
-    }
 
     /**
      * Add the specified clue to the set of clues that affect this square.
@@ -55,16 +51,6 @@ public class Square {
         clues.remove(clue);
 
         return this;
-    }
-
-    /**
-     * Get the set of clues that affect this square.
-     *
-     * @return the clues
-     * @see Clue#getAffectedSquares()
-     */
-    public Set<Clue> getClues() {
-        return clues;
     }
 
     /**

@@ -4,7 +4,10 @@ import bo.gotthardt.puzzle.magipic.Clue;
 import bo.gotthardt.puzzle.magipic.Square;
 import bo.gotthardt.util.Interval;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.*;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.Set;
@@ -16,23 +19,15 @@ import java.util.Set;
  */
 public abstract class GridInput implements PuzzleInput {
     private ArrayTable<Integer, Integer, Square> squares;
+    @Getter
     protected final Set<Clue> clues = Sets.newHashSet();
     protected int numRows;
+    @Getter
     protected int numColumns;
-
-    @Override
-    public Set<Clue> getClues() {
-        return clues;
-    }
 
     @Override
     public List<Square> getSquares() {
         return ImmutableList.copyOf(squares.values());
-    }
-
-    @Override
-    public int getNumColumns() {
-        return numColumns;
     }
 
     /**

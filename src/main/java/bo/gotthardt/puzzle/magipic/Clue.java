@@ -2,6 +2,7 @@ package bo.gotthardt.puzzle.magipic;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
+import lombok.Getter;
 
 import javax.annotation.concurrent.Immutable;
 import java.util.Set;
@@ -16,7 +17,10 @@ import java.util.Set;
 @Immutable
 public class Clue {
     private final int targetBlack;
+    /** The squares affected by this clue, never empty. */
+    @Getter
     private final Set<Square> affectedSquares;
+
 
     /**
      * Constructor.
@@ -33,15 +37,6 @@ public class Clue {
         for (Square s : affectedSquares) {
             s.addClue(this);
         }
-    }
-
-    /**
-     * Get the squares affected by this clue.
-     *
-     * @return the set of squares, not empty
-     */
-    public Set<Square> getAffectedSquares() {
-        return affectedSquares;
     }
 
     /**

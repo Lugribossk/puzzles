@@ -3,6 +3,7 @@ package bo.gotthardt.puzzle.magipic.output;
 import bo.gotthardt.puzzle.magipic.Color;
 import bo.gotthardt.puzzle.magipic.MagipicPuzzle;
 import bo.gotthardt.puzzle.magipic.Square;
+import lombok.RequiredArgsConstructor;
 
 /**
  * Output generator for representing a puzzle's square colors in the same simplified string format as in
@@ -10,17 +11,9 @@ import bo.gotthardt.puzzle.magipic.Square;
  *
  * @author Bo Gotthardt
  */
+@RequiredArgsConstructor
 public class StringOutput {
     private final MagipicPuzzle input;
-
-    /**
-     * Constructor.
-     *
-     * @param input the puzzle to generate output for.
-     */
-    public StringOutput(MagipicPuzzle input) {
-        this.input = input;
-    }
 
     /**
      * Get the output. See {@link bo.gotthardt.puzzle.magipic.input.StringInput} for the format.

@@ -6,7 +6,9 @@ import bo.gotthardt.puzzle.magipic.output.StringOutput;
 import bo.gotthardt.puzzle.magipic.rule.*;
 import bo.gotthardt.util.Interval;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.*;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import lombok.Getter;
 import org.joor.Reflect;
 
 import java.util.List;
@@ -44,8 +46,13 @@ public class MagipicPuzzle {
                              CleanupRule.class);
 
     private Set<Clue> activeClues;
+    /** The squares in this puzzle. */
+    @Getter
     private final List<Square> squares;
+    /** The number of columns in this puzzle's squares. */
+    @Getter
     private final int numColumns;
+
 
     /**
      * Convenience constructor that uses {@link StringInput}.
@@ -103,24 +110,6 @@ public class MagipicPuzzle {
         }
 
         return this;
-    }
-
-    /**
-     * Get the squares in this puzzle.
-     *
-     * @return the squares
-     */
-    public List<Square> getSquares() {
-        return squares;
-    }
-
-    /**
-     * Get the number of columns in this puzzle's squares.
-     *
-     * @return the number of columns
-     */
-    public int getNumColumns() {
-        return numColumns;
     }
 
     /**

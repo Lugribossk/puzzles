@@ -20,7 +20,8 @@ public abstract class ClueSolutionRule {
     protected final Clue clue;
     protected final Set<Square> affectedSquares;
     protected final Set<Square> uncoloredSquares;
-    private Optional<Set<Clue>> solution;
+    private Optional<Set<Clue>> solution = Optional.absent();
+
 
     /**
      * Constructor.
@@ -33,7 +34,6 @@ public abstract class ClueSolutionRule {
         this.clue = clue;
         affectedSquares = clue.getAffectedSquares();
         uncoloredSquares = Sets.filter(affectedSquares, Square.UNCOLORED);
-        solution = Optional.absent();
 
         trySolve();
     }
